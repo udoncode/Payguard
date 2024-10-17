@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+    <header th:fragment="header">
+      <img src="/images/logo.svg" alt="로고" class="logo" />
+      <div class="inner">
+        <h3></h3>
+          <a th:href="@{/member/my-info/{id}(id=${session.member.id})}" class="profile">
+            <img src="/images/person.svg" alt="사람" />
+            <span th:if="${session.member}" class="name" th:text="${session.member.name}"></span>
+          </a>
+      </div>
+    </header>
+</html>

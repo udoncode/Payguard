@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+    <main th:fragment="main">
+      <div class="inner">
+        <div class="heading">
+          <div class="wrap">
+            <h2 class="heading__main">거래 분석</h2>
+            <h4 class="heading__sub">계획한 예산에 따른 수입과 지출을 분석하여 시각화합니다.</h4>
+          </div>
+
+          <form>
+            <div class="select-box">
+              <select name="id" id="budget_id">
+                <option value="" disabled selected>분석할 예산 선택</option>
+                <option th:each="budget : ${list}" th:text="${budget.name}" th:value="${budget.id}"></option>
+              </select>
+            </div>
+            <button class="btn btn--search">
+              <img src="/images/search.svg" alt="search">
+            </button>
+          </form>
+        </div>
+
+        <section class="contents">
+          <div class="flex-item progress-bar">
+            <div class="chart">
+              <p>전체 예산 중 소비 
+              	<span></span>
+              </p>
+              <div class="bar">
+                <div class="progress"></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-item budget-amount">
+            <div class="wrap">
+              <h4>계획 예산</h4>
+              <p></p>
+            </div>
+          </div>
+          <div class="flex-item remaining-amount">
+            <div class="wrap">
+              <h4>지출 금액</h4>
+              <p></p>
+            </div>
+          </div>
+          <div class="flex-item trend-line">
+            <div id="curve_chart" style="width: 1200px; height: 300px;"></div>
+            <div class="loader hide"></div>
+          </div>
+          <div class="flex-item bar">
+            <div id="column_chart" style="width: 800px; height: 300px;"></div>
+            <div class="loader hide"></div>
+          </div>
+          <div class="flex-item pie">
+            <div id="pie_chart" style="width: 430px; height: 350px;"></div>
+            <div class="loader hide"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+</html>

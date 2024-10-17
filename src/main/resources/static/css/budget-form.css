@@ -1,0 +1,105 @@
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, .1);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+}
+.budget-form {
+  width: 490px;
+  padding: 45px 60px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 16px 40px rgba(112, 144, 176, .2);
+  background-color: #FFF;
+}
+.budget-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.budget-form input {
+  width: 100%;
+  height: 50px;
+  padding: 5px 10px;
+  border: 1px solid var(--gray-1);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.budget-form input:focus {
+	border: 1px solid var(--blue-0);
+}
+.budget-form .close-container {
+  text-align: right;
+}
+.budget-form .heading-container {
+  margin-bottom: 45px;
+}
+.budget-form .heading-container h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.budget-form .heading-container h4 {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.budget-form .date-container {
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-rows: .2fr .8fr;
+  grid-template-columns: .5fr 30px .5fr;
+  grid-auto-columns: .5fr .5fr;
+}
+.budget-form .date-container label:first-of-type {
+  grid-column: 1 / 2;
+}
+.budget-form .date-container label:last-of-type {
+  grid-column: 3 / 4;
+}
+.budget-form .date-container p {
+  align-self: center;
+  justify-self: center;
+}
+.budget-form .date-error-container {
+	margin-bottom: 40px;
+	display: grid;
+	grid-template-columns: .5fr 30px .5fr;
+}
+.budget-form .date-error-container .error:first-child {
+	grid-column: 1 / 2;
+}
+.budget-form .date-error-container .error:last-child {
+	grid-column: 3 / 4;
+}
+.budget-form .content-container {
+  margin-bottom: 40px;
+}
+.budget-form .budget-container {
+  margin-bottom: 50px;
+}
+.budget-form .btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.budget-form .btn-container .btn {
+  width: 100px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: .3s;
+}
+.budget-form .btn-container .btn:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지출 관리</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/analysis.css">
+    
+    <script src="/script/markCategory.js" defer></script>
+    
+    <!-- GOOGLE CHART -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/script/renderAnalysis.js" type="module" defer></script>
+    <script src="/script/chart/pie.js" type="module" defer></script>
+    <script src="/script/chart/column.js" type="module" defer></script>
+    <script src="/script/chart/line.js" type="module" defer></script>
+  </head>
+  
+  
+  <body class="grid-container">
+  	<!-- 헤더 섹션 -->
+  	<div th:replace="~{fragments/header::header}"></div>
+  	
+  	<!-- 카테고리 섹션 -->
+  	<div th:replace="~{fragments/category::category}"></div>
+  	
+  	<!-- 컨텐츠 섹션 -->
+  	<div th:replace="~{fragments/analysis::main}"></div>
+  </body>
+</html>

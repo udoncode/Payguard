@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 정보</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/my-info.css">
+</head>
+<body class="grid-container">
+  <!-- 헤더 섹션 -->
+  <div th:replace="~{fragments/header::header}"></div>
+
+    <!-- 카테고리 섹션 -->
+    <div th:replace="~{fragments/category::category}"></div>
+
+  <!-- 컨텐츠 섹션 -->
+  <main>
+    <section class="center inner">
+      <form action="#" th:action="@{/member/{id}(id=${member.id})}" th:object="${member}" method="post" class="signup-form">
+        <h2>내 정보</h2>
+    
+        <div class="input-container">
+          <label for="email">이메일 주소</label>
+          <input type="email" name="email" id="email" th:field="*{email}" value="${member.email}" required>
+        </div>
+        <div class="input-container">
+          <label for="password">비밀번호</label>
+          <input type="password" name="password" id="password" th:field="*{password}" required>
+        </div>
+        <div class="input-container">
+          <label for="name">사용자명</label>
+          <input type="text" name="name" id="name" th:field="*{name}" value="${member.name}" required>
+        </div>
+        <button class="btn btn--primary register">저장하기</button>
+      </form>
+    </section>
+  </main>
+  
+  <script>
+  	document.querySelector('header h3').innerHTML = '내 정보';
+  </script>
+</body>
+</html>

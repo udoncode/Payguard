@@ -1,0 +1,72 @@
+.flex-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAFBFD;
+  position: relative;
+}
+.flex-container header a {
+	width: 117px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.flex-container main {
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+}
+.flex-container main section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform: translateY(-5vh);
+}
+.desc__sub {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.desc__main {
+  text-align: center;
+  font-size: 10rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+.desc__main strong {
+  position: relative;
+  z-index: 1;
+  color: var(--blue-0);
+}
+.icon {
+  width: 200px;
+  position: absolute;
+}
+.icon--coin {
+  bottom: 80px;
+  right: -80px;
+}
+.icon--wallet {
+  top: 40px;
+  left: -80px;
+  transform: rotate(-45deg);
+}
+.btn--enter {
+  margin-top: 50px;
+  width: 200px;
+  height: 60px;
+  font-size: 2rem;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: .3s;
+}
+.btn--enter:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(2, 87, 251, .2);
+}

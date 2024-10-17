@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예산 지출 계획</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/transaction.css">
+    <link rel="stylesheet" href="/css/transaction-form.css" />
+    <script src="/script/markCategory.js" defer></script>
+  </head>
+
+  <body class="grid-container">
+    <div class="background">
+      <form
+        th:action="@{/transaction/add}"
+        method="post"
+        th:object="${transactionDTO}"
+        class="transaction-form"
+      >
+        <div class="close-container">
+          <a href="/transaction">
+            <img src="/images/close.svg" alt="close" />
+          </a>
+        </div>
+
+        <div class="heading-container">
+          <h2>거래 내역 상세</h2>
+          <h4>거래한 내용을 상세하게 기록합니다.</h4>
+        </div>
+
+        <div class="type-container">
+          <h5 class="title-label">거래 유형</h5>
+          <div class="wrap">
+            <div class="type-item">
+              <input
+                type="radio"
+                name="type"
+                id="income"
+                th:field="*{type}"
+                value="INCOME"
+                hidden
+              />
+              <div class="select-box">
+                <label for="income">수입</label>
+              </div>
+            </div>
+            <div class="type-item">
+              <input
+                type="radio"
+                name="type"
+                id="expense"
+                th:field="*{type}"
+                value="EXPENSE"
+                hidden
+              />
+              <div class="select-box">
+                <label for="expense">지출</label>
+              </div>
+            </div>
+          </div>
+       	  <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="error"></div>
+        </div>
+
+        <div class="category-container">
+          <h5 class="title-label">카테고리</h5>
+          <div class="wrap">
+            <input
+              type="radio"
+              name="category"
+              id="living"
+              th:field="*{category}"
+              value="LIVING"
+              hidden
+            />
+            <div class="category-item">
+              <label for="living">
+                생활비
+                <p>식비, 주거비, 공과금, 통신비, 교통비, 생활용품 등</p>
+              </label>
+            </div>
+            <input
+              type="radio"
+              name="category"
+              id="leisure"
+              th:field="*{category}"
+              value="LEISURE_CULTURE"
+              hidden
+            />
+            <div class="category-item">
+              <label for="leisure">
+                여가 및 문화비
+                <p>취미, 여가, 문화, 오락, 외식, 여행 비용 등</p>
+              </label>
+            </div>
+            <input
+              type="radio"
+              name="category"
+              id="savings"
+              th:field="*{category}"
+              value="SAVINGS_INVESTMENT"
+              hidden
+            />
+            <div class="category-item">
+              <label for="savings">
+                저축 및 투자비
+                <p>저축, 적금, 투자, 비상금 등</p>
+              </label>
+            </div>
+            <input
+              type="radio"
+              name="category"
+              id="medical"
+              th:field="*{category}"
+              value="MEDICAL_EDUCATION"
+              hidden
+            />
+            <div class="category-item">
+              <label for="medical">
+                의료 및 교육비
+                <p>의료비, 보험료, 등록금, 학원비, 자녀 교육비 등</p>
+              </label>
+            </div>
+          </div>
+          <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error"></div>
+        </div>
+
+        <div class="account-date-container">
+          <div class="account">
+            <label for="amount" class="title-label">거래 금액</label>
+            <input type="number" name="amount" id="amount" th:field="*{amount}" />
+            <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="error"></div>
+          </div>
+          <div class="date">
+            <label for="date" class="title-label">거래 날짜</label>
+            <input type="date" name="date" id="date" th:field="*{date}" />
+            <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="error"></div>
+          </div>
+        </div>
+
+        <div class="transaction-content">
+          <label for="description" class="title-label">거래 내용</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            th:field="*{description}"
+          />
+          <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></div>
+        </div>
+
+        <div class="btn-container">
+          <button class="btn">등록</button>
+        </div>
+      </form>
+    </div>
+    
+    <!-- 헤더 섹션 -->
+    <div th:replace="~{fragments/header::header}"></div>
+
+    <!-- 카테고리 섹션 -->
+    <div th:replace="~{fragments/category::category}"></div>
+
+    <!-- 컨텐츠 섹션 -->
+    <main th:fragment="main">
+      <div class="inner">
+        <div class="heading">
+          <div class="wrap">
+            <h2 class="heading__main">거래 관리</h2>
+            <h4 class="heading__sub">수입과 지출을 기록하고, 거래 내역을 관리합니다.</h4>
+          </div>
+          <a href="/transaction/form" class="btn btn--add">
+            <img src="/images/add.svg" alt="add" />
+            <span>내역 추가</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

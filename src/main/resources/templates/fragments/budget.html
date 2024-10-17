@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+    <main th:fragment="main">
+      <div class="inner">
+        <div class="heading">
+          <div class="wrap">
+            <h2 class="heading__main">예산 계획</h2>
+            <h4 class="heading__sub">기간 내에 사용할 예산을 설정합니다.</h4>
+            <div class="message"></div>
+          </div>
+          <a href="/budget/form" class="btn btn--add">
+            <img src="/images/add.svg" alt="add" />
+            <span>계획 추가</span>
+          </a>
+        </div>
+
+        <section class="contents">
+          <div class="card" th:each="budget: ${list}">
+            <div class="card__text card__name">
+              <h5 class="title">예산 내용</h5>
+              <p class="data" th:text="${budget.name}"></p>
+            </div>
+            <div class="card__text card__start">
+              <h5 class="title">예산 시작일</h5>
+              <p class="data" th:text="${#temporals.format(budget.startDate, 'yyyy-MM-dd')}"></p>
+            </div>
+            <div class="card__text card__end">
+              <h5 class="title">예산 종료일</h5>
+              <p class="data" th:text="${#temporals.format(budget.endDate, 'yyyy-MM-dd')}"></p>
+            </div>
+            <div class="card__text card__amount">
+              <h5 class="title">예산 금액</h5>
+              <p class="data" th:text="${#numbers.formatInteger(budget.amount, 1, 'COMMA')} + 원"></p>
+            </div>
+            <div class="card__btns">
+              <a th:href="@{/budget/form/{id}(id=${budget.id})}" class="btn-edit">
+                <img src="/images/edit_square.svg" alt="edit">
+              </a>
+              <button th:onclick="'deleteBudget(' + ${budget.id} + ')'" class="btn-delete">
+                <img src="/images/delete.svg" alt="delete">
+              </button>
+            </div>
+          </div>
+        </section>
+        <div th:if="${#lists.isEmpty(list)}">등록된 예산이 없습니다.</div>
+
+        <!-- 페이지네이션 -->
+        <nav th:if="${!list.isEmpty()}" class="pages">
+          <ul>
+            <li th:classappend="${!list.hasPrevious} ? 'disabled'">
+            	<a th:href="@{|?page=${list.number-1}|}">
+            		<img src="/images/keyboard_arrow_left.svg" alt="prev" />
+           		</a>
+           	</li>
+           	
+           	<li th:each="page: ${#numbers.sequence(0, list.totalPages-1)}"
+           		th:if="${page >= (list.number / 5) * 5 and page < ((list.number / 5) + 1) * 5}"
+           		th:classappend="${page == list.number} ? 'active'">
+           		<a th:text="${page + 1}" th:href="@{|?page=${page}|}" ></a>
+           	</li>
+           	
+	        <li th:classappend="${!list.hasNext} ? 'disabled'">
+            	<a th:href="@{|?page=${list.number+1}|}">
+            		<img src="/images/keyboard_arrow_right.svg" alt="next" />
+           		</a>
+           	</li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+    
+</html>

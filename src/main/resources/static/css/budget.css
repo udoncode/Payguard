@@ -1,0 +1,71 @@
+section.contents {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.contents .card {
+  padding: 20px 60px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(25, 93, 194, .07);
+  display: grid;
+  grid-template-rows: 40px;
+  grid-template-columns: .28fr .1fr .1fr .12fr .4fr;
+  align-items: center;
+  column-gap: 50px;
+}
+.contents .card__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.contents .card__text:nth-child(1) {
+  grid-column: 1 / 2;
+}
+.contents .card__text:nth-child(2) {
+  grid-column: 2 / 3;
+}
+.contents .card__text:nth-child(3) {
+  grid-column: 3 / 4;
+}
+.contents .card__text:nth-child(4) {
+  grid-column: 4 / 5;
+}
+.contents .card__btns {
+  grid-column: 5 / 6;
+  justify-self: end;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+.contents .card__btns a,
+.contents .card__btns button {
+  border: none;
+  border-radius: 10px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.contents .card__btns .btn-edit {
+  background-color: var(--blue-1);
+
+}
+.contents .card__btns .btn-delete {
+  background-color: var(--gray-1);
+}
+.contents .card__text .title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--gray-0);
+  margin-bottom: 5px;
+}
+.contents .card__text .data {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--black);
+}

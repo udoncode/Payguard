@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+  <body class="flex-container">
+    <div class="background">
+      <form th:action="@{/login}" method="post" class="login-form">
+        <div class="close-container">
+          <a href="/">
+            <img src="/images/close.svg" alt="close">
+          </a>
+        </div>
+    
+        <h2>로그인</h2>
+    
+        <div class="input-container">
+          <input type="email" name="email" id="email" placeholder="이메일" autocomplete="username">
+          <input type="password" name="password" id="password" placeholder="비밀번호"  autocomplete="current-password">
+        </div>
+    
+        <button class="btn btn--login">로그인</button>
+        <a href="/member/register">회원가입</a>
+      </form>
+    </div>
+
+	  <header>
+	  	<a th:href="@{/index}">
+	    	<img src="/images/logo.svg" alt="로고" class="logo" />
+	    </a>
+	  </header>
+
+	  <main>
+	    <section class="desc">
+	      <div class="desc__sub">
+	        돈 걱정, 이제 그만! <br>
+	        페이가드와 함께 지출을 스마트하게 관리하세요.
+	      </div>
+	
+	      <div class="desc__main">
+	        <h1>
+	          지갑을 <br>
+	          지켜주는 <br>
+	          예산 지킴이 <br>
+	          <strong>페이가드</strong>
+	        </h1>
+	        <img src="./images/coin.png" alt="coin" class="icon icon--coin">
+	        <img src="./images/wallet.png" alt="wallet" class="icon icon--wallet">
+	      </div>
+	
+	      <a href="/login" class="btn btn--enter">입장하기</a>
+	    </section>
+	  </main>
+  </body>
+</html>

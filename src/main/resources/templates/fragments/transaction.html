@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+    <main th:fragment="main">
+      <div class="inner">
+        <div class="heading">
+          <div class="wrap">
+            <h2 class="heading__main">거래 관리</h2>
+            <h4 class="heading__sub">수입과 지출을 기록하고, 거래 내역을 관리합니다.</h4>
+          </div>
+          <a href="/transaction/form" class="btn btn--add">
+            <img src="/images/add.svg" alt="add" />
+            <span>내역 추가</span>
+          </a>
+        </div>
+
+        <section class="contents">
+          <div class="table">
+            <div class="row-head">
+              <h4>거래 유형</h4>
+              <h4>카테고리</h4>
+              <h4>거래 설명</h4>
+              <h4>거래 금액</h4>
+              <h4>남은 예산</h4>
+              <h4>거래 날짜</h4>
+              <h4>예산명</h4>
+            </div>
+            <div class="row-body">
+              <div th:each="transaction : ${list}">
+                <a th:href="@{transaction/form/{id}(id=${transaction.id})}" class="row">
+	                <p th:text="${transaction.type == 'INCOME' ? '수입' : '지출'}"
+	                   th:class="'highlight--bold ' + (${transaction.type == 'INCOME'} ? 'highlight--green' : 'highlight--red')"></p>
+	                <p th:text="${transaction.category == 'LIVING' ? '생활비' : 
+					              transaction.category == 'LEISURE_CULTURE' ? '여가 및 문화비' : 
+					              transaction.category == 'SAVINGS_INVESTMENT' ? '저축 및 투자비' : 
+					              transaction.category == 'MEDICAL_EDUCATION' ? '의료 및 교육비' : ''}"></p>
+	                <p th:text="${transaction.description}"></p>
+	                <p th:text="${#numbers.formatInteger(transaction.amount, 1, 'COMMA')} + 원"></p>
+	                <p th:text="${#numbers.formatInteger(transaction.remainingAmount, 1, 'COMMA')} + 원"></p>
+	                <p th:text="${transaction.date}"></p>
+	                <p th:text="${transaction.budgetName}"></p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 페이지네이션 -->
+        <nav th:if="${!list.isEmpty()}" class="pages">
+          <ul>
+            <li th:classappend="${!list.hasPrevious} ? 'disabled'">
+            	<a th:href="@{|?page=${list.number-1}|}">
+            		<img src="/images/keyboard_arrow_left.svg" alt="prev" />
+           		</a>
+           	</li>
+           	
+            <li th:each="page: ${#numbers.sequence(0, list.totalPages-1)}"
+           		 th:if="${page >= (list.number / 5) * 5 and page < ((list.number / 5) + 1) * 5}"
+           		th:classappend="${page == list.number} ? 'active'">
+           		<a th:text="${page + 1}" th:href="@{|?page=${page}|}" ></a>
+           	</li>
+            
+            <li th:classappend="${!list.hasNext} ? 'disabled'">
+            	<a th:href="@{|?page=${list.number+1}|}">
+            		<img src="/images/keyboard_arrow_right.svg" alt="next" />
+           		</a>
+           	</li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+    
+</html>

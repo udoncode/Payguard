@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+    <nav th:fragment="category" class="category">
+      <ul>
+        <li class="category__item category--budget">
+          <a href="/budget">
+            <div class="wrap">
+              <img src="/images/assignment.svg" alt="assignment" />
+              <h4>예산 계획</h4>
+            </div>
+            <img
+              src="/images/arrow_forward_ios.svg"
+              alt="arrow"
+              class="arrow"
+            />
+          </a>
+        </li>
+        <li class="category__item category--transaction">
+          <a href="/transaction">
+            <div class="wrap">
+              <img src="/images/credit_card.svg" alt="card" />
+              <h4>지출 관리</h4>
+            </div>
+            <img
+              src="/images/arrow_forward_ios.svg"
+              alt="arrow"
+              class="arrow"
+            />
+          </a>
+        </li>
+        <li class="category__item category--analysis">
+          <a href="/analysis">
+            <div class="wrap">
+              <img src="/images/bar_chart.svg" alt="chart" />
+              <h4>지출 분석</h4>
+            </div>
+            <img
+              src="/images/arrow_forward_ios.svg"
+              alt="arrow"
+              class="arrow"
+            />
+          </a>
+        </li>
+      </ul>
+
+      <a href="/logout" class="btn btn--logout">
+        <img src="/images/logout.svg" alt="logout" />
+        <span>로그아웃</span>
+      </a>
+    </nav>
+</html>

@@ -1,0 +1,188 @@
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, .1);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+}
+.transaction-form {
+  width: 680px;
+  padding: 45px 60px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 16px 40px rgba(112, 144, 176, .2);
+  background-color: #FFF;
+}
+.transaction-form .title-label {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+
+.transaction-form .close-container {
+  text-align: right;
+}
+
+
+.transaction-form .heading-container {
+  margin-bottom: 45px;
+}
+.transaction-form .heading-container h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.transaction-form .heading-container h4 {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+
+.transaction-form .type-container {
+  margin-bottom: 40px;
+}
+.transaction-form .type-container .wrap {
+  display: flex;
+}
+.transaction-form .type-container .type-item {
+  width: 100%;
+}
+.transaction-form .type-container .type-item .select-box {
+  width: 100%;
+  height: 35px;
+  border: 1px solid var(--gray-1);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gray-0);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.transaction-form .type-container .type-item:nth-of-type(1) .select-box {
+  border-radius: 5px 0 0 5px;
+}
+.transaction-form .type-container .type-item:nth-of-type(2) .select-box {
+  border-radius: 0 5px 5px 0;
+}
+.transaction-form .type-container .type-item input[name="type"]:checked + .select-box {
+  border: 1px solid var(--blue-0);
+  background-color: var(--blue-1);
+  color: var(--blue-0);
+}
+.transaction-form .type-container .type-item .select-box label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+
+.transaction-form .category-container {
+  margin-bottom: 40px;
+}
+.transaction-form .category-container .wrap {
+  display: grid;
+  grid-template-rows: .5fr .5fr;
+  grid-template-columns: 2fr 2fr;
+  gap: 20px;
+}
+.transaction-form .category-container .category-item {
+  height: 70px;
+  border: 1px solid var(--gray-1);
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.transaction-form .category-container .category-item label {
+  font-size: 1.4rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 5px;
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.transaction-form .category-container .category-item p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--gray-0);
+}
+.transaction-form .category-container input[name="category"]:checked + .category-item {
+  border: 1px solid var(--blue-0);
+  background-color: var(--blue-1);
+  color: var(--blue-0);
+}
+
+
+.transaction-form .account-date-container {
+  margin-bottom: 40px;
+  display: flex;
+  column-gap: 20px;
+}
+.transaction-form .account-date-container div {
+  width: 100%;
+}
+.transaction-form .account-date-container label {
+  display: block;
+}
+.transaction-form .account-date-container input {
+  padding: 5px 20px;
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--gray-1);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+
+.transaction-form .transaction-content {
+  margin-bottom: 40px;
+}
+.transaction-form .transaction-content label {
+  display: block;
+}
+.transaction-form .transaction-content input {
+  padding: 5px 20px;
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--gray-1);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.transaction-form .btn-container {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 15px;
+}
+.transaction-form .btn-container .btn {
+  width: 100px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: .3s;
+}
+.transaction-form .btn-container .btn:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+}
+.btn--red {
+  background-color: #FF4444;
+}
